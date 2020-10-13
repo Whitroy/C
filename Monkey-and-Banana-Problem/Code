@@ -1,0 +1,71 @@
+#include<stdio.h>
+void main()
+{
+    int banana=0,steps=0,i=0,n;
+    
+    scanf("Enter size = %d",&n);
+    
+    int arr[n];
+    
+    for(int x=0;x<n;x++)
+    {
+        scanf("%d",&arr[x]);
+    }
+    
+    n=sizeof(arr)/sizeof(1);
+    
+    printf("Step Chart :- \n");
+    printf("%d -> ",steps);
+    
+    while(i!=n-1)
+    {
+        if(i==0)
+        {
+            if(arr[0]>n-1)
+            {
+                banana+=arr[0];
+                i+=1;
+                banana+=arr[i];
+                steps+=1;
+                printf("%d -> ",steps);
+            }
+            else
+            {
+                banana+=arr[0];
+                i+=arr[i];
+                banana+=arr[i];
+                steps+=arr[0];
+                printf("%d -> ",steps);
+            }
+        }
+        else
+        {
+            
+            if(i+arr[i]>n-1)
+            {
+                if(arr[i]+arr[0]>n)
+                    {
+                        i+=1;
+                        banana+=arr[i];
+                        steps+=i;
+                        printf("%d -> ",steps);
+                    }
+                else
+                    {
+                        i+=arr[0];
+                        banana+=arr[i];
+                        steps+=i;
+                        printf("%d -> ",steps);
+                    }
+            }
+            else
+            {
+                steps+=arr[i];
+                i+=arr[i];
+                banana+=arr[i];
+                printf("%d\n",steps);
+            }
+        }
+    }
+    printf("Total banana eat = %d\nTotal steps covered = %d",banana,steps);
+}
